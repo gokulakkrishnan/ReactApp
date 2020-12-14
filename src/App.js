@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+
 import './App.css';
+import LoginPage from "./login/login.js";
+import SignUpPage from "./signup/signUp.js"
+import { BrowserRouter as Router,Route} from 'react-router-dom';
+import DocumentTitle from 'react-document-title';
+import React from 'react';
+const Login = () =>(
+<DocumentTitle title='Login'>
+  <LoginPage />
+  </DocumentTitle>
+);
+const Signup = () =>(
+<DocumentTitle title='SignUp'>
+<SignUpPage />
+</DocumentTitle>);
+class App extends React.Component {
+  
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={Login} />
+          <Route path="/Signup" component={Signup} />
+        </div>
+      </Router>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    )
+  }
 }
-
 export default App;

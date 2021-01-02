@@ -28,7 +28,9 @@ h1{
     top:50%;
     left:50%;
     width: 400px;
+    min-height: 400px;
     transform: translate(-50%,-50%);
+    overflow: auto;
 }
 
 .inputbox{

@@ -33,7 +33,7 @@ function Dash() {
         setList(response);
        }
         fetchData();
-    },[]);
+    },[bearerToken]);
     async function onsubmit() {
         const name = { taskName }.taskName;
         const completed = "Incomplete";

@@ -33,7 +33,7 @@ function Dash() {
         setList(response);
        }
         fetchData();
-    },[list,bearerToken]);
+    },[]);
     async function onsubmit() {
         const name = { taskName }.taskName;
         const completed = "Incomplete";
@@ -106,7 +106,9 @@ function Dash() {
             body: JSON.stringify(payload)
 
         });
-        list.splice(index,1);
+        const newList=[...list];
+        newList.splice(index,1);
+        setList(newList);
     }
     return (
         <div className='dash-content'>

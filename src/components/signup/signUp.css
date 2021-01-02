@@ -1,29 +1,25 @@
-body{
-    background: url("../image/bg.jpg") no-repeat;
-    background-attachment: fixed;
-    background-size:cover ;
-  }
-  .usericon{
+
+  .signUp-usericon{
     position: absolute;
     width: 70px;
     top: -35px;
     left: 41%;
   }
-  .content{
+  .signUp-content{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
   
   }
-  form {
+  .signUp-form {
     background-color: #342e28;
     width: 450px;
     min-height: 400px;
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
   }
-  .inner{
+  .signUp-inner{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +27,7 @@ body{
     font-size: 10px;
     color: white;
   }
-  .box{
+  .signUp-box{
     margin-bottom:25px ;
     width: 300px;
     height: 30px;
@@ -41,23 +37,32 @@ body{
     font-size: 15px;
     outline: none;
   }
-  .forlink{
-    margin-right: 200px;
-    font-size: 15px;
-    margin-bottom:30px ;
+  .signUp-check{
+    margin-right: 260px;
+    width:100px;
+   
   }
-  button{
+  .signUp-label{
+    position: relative;
+    top:-20px;
+    left:-20px;
+    font-size: 15px;
+    color: pink;
+    margin-bottom: 10px;
+  }
+  .signUp-button{
     padding:10px;
     width: 150px;
     border:none;
     outline: none;
     border-radius:20px ;
-    margin-bottom: 30px;
+    cursor: pointer;
+    margin-bottom: 15px;
   }
-  p{
+  .signUp-p{
     font-size: 15px;
   }
-  a{
+  .signUp-span{
     color:pink;
   }
   

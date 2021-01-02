@@ -1,19 +1,13 @@
 
 import './App.css';
-import LoginPage from "./login/login.js";
-import SignUpPage from "./signup/signUp.js"
+import LoginPage from "./components/login/login.js";
+import SignUpPage from "./components/signup/signUp.js"
+import Dash from "./components/dashboard/dash.js"
 import { BrowserRouter as Router,Route} from 'react-router-dom';
-import DocumentTitle from 'react-document-title';
 import React from 'react';
-const Login = () =>(
-<DocumentTitle title='Login'>
-  <LoginPage />
-  </DocumentTitle>
-);
-const Signup = () =>(
-<DocumentTitle title='SignUp'>
-<SignUpPage />
-</DocumentTitle>);
+const Login = () =>(<LoginPage />);
+const Signup = () =>(<SignUpPage />);
+const DashBoard = () =>(<Dash />);
 class App extends React.Component {
   
   render() {
@@ -22,6 +16,7 @@ class App extends React.Component {
         <div className="App">
           <Route exact path="/" component={Login} />
           <Route path="/Signup" component={Signup} />
+          <Route path="/dashboard" component={DashBoard} />
         </div>
       </Router>
 

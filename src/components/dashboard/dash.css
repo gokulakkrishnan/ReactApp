@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    position: fixed;
+    height: 60px;
+    width:100%;
+    text-align: left;
+    border:1px solid;
+    background-color: #F0F3F4 ;  
+
+}
+.logoutpic{
+    position: absolute;
+    top:6px;
+    right: 30px;
+    width:40px;
+    border:1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+}
+h1{
+    margin-left: 30px;
+}
+.box{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 400px;
+    transform: translate(-50%,-50%);
+}
+
+.inputbox{
+    
+    width: 60%;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border:1px solid;
+    border-radius: 10px;
+    outline: none;
+}
+.btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border:1px solid;
+    cursor: pointer;
+}
+.box-main{
+    position: relative;
+    top:30px;
+    
+}
+hr{
+    width: 80%;
+   
+}
+.items{
+background-color: #A3E4D7 ;
+border-radius: 5px;
+padding: 5px;
+margin-top:15px;
+text-align: left;
+margin-left:10px ;
+}
+.task-name{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    color:#EC7063 ;
+    cursor: pointer;
+}
+.icon{
+    position: relative;
+    top:-10px;
+    right:-90%;
+    margin-right: 10px;
+    background:none;
+    border:none;
+    outline: none;
+    justify-items: center;
+    cursor: pointer;
+}
+.completed-task{
+    text-decoration: line-through;
+}
+

@@ -52,8 +52,6 @@ function Dash() {
 
         });
         setTaskName('');
-        
-
     }
     async function updateItem(index) {
         
@@ -87,7 +85,8 @@ function Dash() {
             
 
         });
-
+        const newList=[...list];
+        setList(newList);
         
     }
     async function deleteItem(index) {

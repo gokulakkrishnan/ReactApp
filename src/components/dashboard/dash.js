@@ -31,7 +31,7 @@ function Dash() {
         }
         fetchData();
     }, [bearerToken]);
-    async function onsubmit() {
+    async function onSubmit() {
         const name = { taskName }.taskName;
         const completed = "Incomplete";
         const payload = {
@@ -106,7 +106,7 @@ function Dash() {
             </header>
             <div className="box">
                 <div className="addinput">
-                    <form onSubmit={onsubmit}>
+                    <form onSubmit={onSubmit}>
                         <input type="text" placeholder="Add Item" className="inputbox" value={taskName} onChange={e => setTaskName(e.target.value)} required />
                         <button type="submit" className="btn">Add</button>
                     </form>

@@ -12,7 +12,7 @@ function LoginPage(props) {
     function changePassword(event) {
         setPassword(event.target.value)
     }
-    async function onsubmit(event) {
+    async function onSubmit(event) {
         event.preventDefault();
         const Email = { email }.email;
         const Password = { password }.password;
@@ -50,7 +50,7 @@ function LoginPage(props) {
                 </Helmet>
                 <img src="https://img.icons8.com/color/48/000000/user-male-circle--v2.png" className="login-usericon" alt="usericon" />
                 {/* <div className="spinner-border text-warning"></div> */}
-                <form method="POST" className="login-form" onSubmit={onsubmit}>
+                <form method="POST" className="login-form" onSubmit={onSubmit}>
                     <div className="login-inner">
                         <input type="email" placeholder="Enter your Email" className="login-box" onChange={changeEmail} value={email}></input>
                         <input type="password" placeholder="Enter your Password" className="login-box" onChange={changePassword} value={password}></input>

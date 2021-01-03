@@ -19,7 +19,6 @@ function SignUpPage() {
     }
     async function onSubmit(event) {
         event.preventDefault();
-        setLoading(false)
         const Email = { email }.email;
         const Password = { password }.password;
         const mobile = { mobileno }.mobileno;
@@ -36,7 +35,6 @@ function SignUpPage() {
             },
             body: JSON.stringify(registered)
         });
-        setLoading(true);
         setEmail('');
         setPassword('')
         setMobileno('');
@@ -47,6 +45,7 @@ function SignUpPage() {
             alert(b);
         }
         else {
+            setLoading(false)
             history.push('/')
         }
     }

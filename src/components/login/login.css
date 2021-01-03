@@ -6,14 +6,11 @@
     left: 41%;
   }
   .login-content{
-    
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-  
   }
-  
   .login-form {
     background-color: #342e28;
     width: 450px;

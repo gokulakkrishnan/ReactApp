@@ -49,7 +49,6 @@ function LoginPage(props) {
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
                 </Helmet>
                 <img src="https://img.icons8.com/color/48/000000/user-male-circle--v2.png" className="login-usericon" alt="usericon" />
-                {/* <div className="spinner-border text-warning"></div> */}
                 <form method="POST" className="login-form" onSubmit={onSubmit}>
                     <div className="login-inner">
                         <input type="email" placeholder="Enter your Email" className="login-box" onChange={changeEmail} value={email}></input>

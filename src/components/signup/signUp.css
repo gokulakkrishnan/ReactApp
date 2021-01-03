@@ -7,8 +7,9 @@
   }
   .signUp-content{
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
+    height: 10%;
     transform: translate(-50%,-50%);
   
   }

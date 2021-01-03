@@ -1,9 +1,7 @@
 import './login.css';
 import React, { useState } from 'react';
 import Helmet from 'react-helmet'
-import {useHistory} from 'react-router-dom'
-
-
+import { useHistory } from 'react-router-dom'
 function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -33,34 +31,27 @@ function LoginPage(props) {
         setEmail('');
         setPassword('')
         const response = await result.text();
-        if(response.includes("error"))
-        {
-            const a=response.split(',')[2];
-            const b=a.split(':')[1].replace("}", '');
+        if (response.includes("error")) {
+            const a = response.split(',')[2];
+            const b = a.split(':')[1].replace("}", '');
             alert(b);
-           
-
         }
-        else{
-            localStorage.setItem('token',response);
+        else {
+            localStorage.setItem('token', response);
             history.push('/dashboard')
-           
         }
-        
-
     }
     return (
         <div className="login">
             <div className="login-content">
                 <Helmet>
                     <title>Login</title>
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
                 </Helmet>
                 <img src="https://img.icons8.com/color/48/000000/user-male-circle--v2.png" className="login-usericon" alt="usericon" />
                 {/* <div className="spinner-border text-warning"></div> */}
                 <form method="POST" className="login-form" onSubmit={onsubmit}>
                     <div className="login-inner">
-
                         <input type="email" placeholder="Enter your Email" className="login-box" onChange={changeEmail} value={email}></input>
                         <input type="password" placeholder="Enter your Password" className="login-box" onChange={changePassword} value={password}></input>
                         <a href='//#endregion' className="login-forlink">Forgot Password?</a>
@@ -70,11 +61,6 @@ function LoginPage(props) {
                 </form>
             </div>
         </div>
-
-
-
     );
-
-
 };
 export default LoginPage;

@@ -8,8 +8,7 @@ import React from 'react';
 const Login = () =>(<LoginPage />);
 const Signup = () =>(<SignUpPage />);
 const DashBoard = () =>(<Dash />);
-class App extends React.Component {
-  
+class App extends React.Component { 
   render() {
     return (
       <Router>

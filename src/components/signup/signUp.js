@@ -1,7 +1,7 @@
 import './signUp.css';
 import React, { useState } from 'react';
 import Helmet from 'react-helmet'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 function SignUpPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +16,6 @@ function SignUpPage() {
     function changeMobileNo(event) {
         setMobileno(event.target.value)
     }
-
     async function onsubmit(event) {
         event.preventDefault();
         const Email = { email }.email;
@@ -34,26 +33,21 @@ function SignUpPage() {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(registered)
-        });  
+        });
         setEmail('');
         setPassword('')
         setMobileno('');
         const response = await result.text();
-        if(response.includes("error"))
-        {
-            const a=response.split(',')[2];
-            const b=a.split(':')[1].replace("}", '');
+        if (response.includes("error")) {
+            const a = response.split(',')[2];
+            const b = a.split(':')[1].replace("}", '');
             alert(b);
         }
-        else{
+        else {
             alert(response)
             history.push('/')
         }
-        
-        document.getElementsByClassName('signUp-check').checked = false;
     }
-
-
     return (
         <div className="signUp">
             <div className="signUp-content">
@@ -74,10 +68,6 @@ function SignUpPage() {
                 </form>
             </div>
         </div>
-
     );
-
-
-
 }
 export default SignUpPage;

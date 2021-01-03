@@ -1,20 +1,23 @@
 *{
     margin: 0;
     padding: 0;
+   
 }
+
 .header{
     position: fixed;
+    top:0;
+    left:0;
     height: 60px;
     width:100%;
+    display: flex;
     text-align: left;
     border:1px solid;
     background-color: #F0F3F4 ;  
-
+   
 }
 .logoutpic{
-    position: absolute;
-    top:6px;
-    right: 30px;
+    height: 60%;
     width:40px;
     border:1px solid black;
     border-radius: 25px;
@@ -28,13 +31,12 @@ h1{
     top:50%;
     left:50%;
     width: 400px;
-    min-height: 400px;
-    transform: translate(-50%,-50%);
-    overflow: auto;
+    z-index: -1;
+    height: 400px;
+    transform: translate(-50%,-50%);  
 }
 
 .inputbox{
-    
     width: 60%;
     padding: 10px;
     margin-left: 20px;
@@ -54,11 +56,9 @@ h1{
 .box-main{
     position: relative;
     top:30px;
-    
 }
 hr{
     width: 80%;
-   
 }
 .items{
 background-color: #A3E4D7 ;

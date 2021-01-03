@@ -5,6 +5,7 @@ import './dash.css';
 function Dash() {
     const [list, setList] = useState([]);
     const [taskName, setTaskName] = useState('');
+    const [loading, setLoading] = useState(true);
     const history = useHistory();
     const token = localStorage.getItem('token');
     if (token == null) {
@@ -25,8 +26,8 @@ function Dash() {
                     'Authorization': bearerToken
                 },
             });
+            setLoading(false);
             const response = await result.json();
-            console.log(response)
             setList(response);
         }
         fetchData();
@@ -100,31 +101,40 @@ function Dash() {
                 <title>DashBoard</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
             </Helmet>
-            <header className="header">
-                <h1>DashBoard</h1>
-                <img src="https://img.icons8.com/cute-clipart/64/000000/logout-rounded.png" alt="logout-icon"  title="logout" className="logoutpic" onClick={logoutclick} />
-            </header>
-            <div className="box">
-                <div className="addinput">
-                    <form onSubmit={onSubmit}>
-                        <input type="text" placeholder="Add Item" className="inputbox" value={taskName} onChange={e => setTaskName(e.target.value)} required />
-                        <button type="submit" className="btn" title="Add">Add</button>
-                    </form>
+            {loading ?
+                <section>
+                    <div class="loading">
+                        <span className="load">Loading...</span>
+                    </div>
+                </section>
+                : <div><header className="header">
+                    <h1>DashBoard</h1>
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/logout-rounded.png" alt="logout-icon" title="logout" className="logoutpic" onClick={logoutclick} />
+                </header>
+                    <div className="box">
+                        <div className="addinput">
+                            <form onSubmit={onSubmit}>
+                                <input type="text" placeholder="Add Item" className="inputbox" value={taskName} onChange={e => setTaskName(e.target.value)} required />
+                                <button type="submit" className="btn" title="Add">Add</button>
+                            </form>
+                        </div>
+
+                        <div className="box-main"  >
+                            {
+                                list.map((task, index) =>
+                                (<div className="items" key={index} >
+                                    <span onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"}>
+                                        {task.taskName}
+                                    </span>
+                                    <div >
+                                        <button title="delete" className="delete-icon icon" onClick={() => deleteItem(index)}><i className="material-icons">delete</i></button>
+                                    </div>
+                                </div>))
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div className="box-main"  >
-                    {
-                        list.map((task, index) =>
-                        (<div className="items" key={index} >
-                            <span onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"}>
-                                {task.taskName}
-                            </span>
-                            <div >
-                                <button title="delete"className="delete-icon icon" onClick={() => deleteItem(index)}><i className="material-icons">delete</i></button>
-                            </div>
-                        </div>))
-                    }
-                </div>
-            </div>
+            }
         </div>
     )
 }

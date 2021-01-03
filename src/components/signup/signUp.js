@@ -69,7 +69,7 @@ function SignUpPage() {
                         </div>
                     </form>
                 </div>
-                : <section>
+                : <section className="loadingbody">
                     <div class="loading">
                         <span className="load">Loading...</span>
                     </div>

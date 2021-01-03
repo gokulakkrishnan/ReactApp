@@ -32,8 +32,9 @@ function Dash() {
             setList(response);
         }
         fetchData();
-    }, [bearerToken]);
-    async function onSubmit() {
+    }, [bearerToken,taskName]);
+    async function onSubmit(event) {
+        event.preventDefault();
         const name = { taskName }.taskName;
         const completed = "Incomplete";
         const payload = {
@@ -102,13 +103,13 @@ function Dash() {
         setList(newList);
     }
     return (
-        <div className='dash-content'>
+        <section className='dashcontent'>
             <Helmet>
                 <title>DashBoard</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
             </Helmet>
             {loading ?
-                <section>
+                <section className="loadingbody">
                     <div class="loading">
                         <span className="load">Loading...</span>
                     </div>
@@ -141,7 +142,7 @@ function Dash() {
                     </div>
                 </div>
             }
-        </div>
+        </section>
     )
 }
 export default Dash;

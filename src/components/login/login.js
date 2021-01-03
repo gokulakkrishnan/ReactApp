@@ -44,7 +44,7 @@ function LoginPage(props) {
         }
     }
     return (
-        <div className="login">
+        <section className="login">
             {loading ?
                 <div className="login-content">
                     <Helmet>
@@ -61,13 +61,13 @@ function LoginPage(props) {
                             <p className="login-p">Do not have account?<span ><a href='/Signup' className='login-span'>SignUp</a></span></p>
                         </div>
                     </form>
-                </div> : <section>
+                </div> : <section className="loadingbody">
                     <div class="loading">
                         <span className="load">Loading...</span>
                     </div>
                 </section>
             }
-        </div>
+        </section>
     );
 };
 export default LoginPage;

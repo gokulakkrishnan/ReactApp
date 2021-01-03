@@ -6,6 +6,7 @@ function Dash() {
     const [list, setList] = useState([]);
     const [taskName, setTaskName] = useState('');
     const [loading, setLoading] = useState(true);
+    const [cursor, setCursor] = useState("pointer");
     const history = useHistory();
     const token = localStorage.getItem('token');
     if (token == null) {
@@ -51,6 +52,7 @@ function Dash() {
         setTaskName('');
     }
     async function updateItem(index) {
+        setCursor("progress")
         const taskid = list[index].taskId;
         const taskname = list[index].taskName;
         if (list[index].taskStatus === "Completed") {
@@ -74,10 +76,13 @@ function Dash() {
             },
             body: JSON.stringify(payload)
         });
+        setCursor("pointer")
         const newList = [...list];
         setList(newList);
+        
     }
     async function deleteItem(index) {
+        setCursor("progress")
         const taskid = list[index].taskId;
         const payload = {
             taskId: taskid.toString()
@@ -91,6 +96,7 @@ function Dash() {
             },
             body: JSON.stringify(payload)
         });
+        setCursor("pointer")
         const newList = [...list];
         newList.splice(index, 1);
         setList(newList);
@@ -123,11 +129,11 @@ function Dash() {
                             {
                                 list.map((task, index) =>
                                 (<div className="items" key={index} >
-                                    <span onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"}>
+                                    <span onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"} style={{ cursor: cursor }}>
                                         {task.taskName}
                                     </span>
                                     <div >
-                                        <button title="delete" className="delete-icon icon" onClick={() => deleteItem(index)}><i className="material-icons">delete</i></button>
+                                        <button title="delete" className="delete-icon icon" onClick={() => deleteItem(index)}><i className="material-icons" style={{ cursor: cursor }}>delete</i></button>
                                     </div>
                                 </div>))
                             }

@@ -16,7 +16,7 @@ function SignUpPage() {
     function changeMobileNo(event) {
         setMobileno(event.target.value)
     }
-    async function onsubmit(event) {
+    async function onSubmit(event) {
         event.preventDefault();
         const Email = { email }.email;
         const Password = { password }.password;
@@ -55,11 +55,11 @@ function SignUpPage() {
                     <title>SignUp</title>
                 </Helmet>
                 <img src="https://img.icons8.com/color/48/000000/user-male-circle--v2.png" className="signUp-usericon" alt="usericon" />
-                <form method="POST" className='signUp-form' onSubmit={onsubmit}>
+                <form method="POST" className='signUp-form' onSubmit={onSubmit}>
                     <div className="signUp-inner">
-                        <input type="email" placeholder="Enter Email" className="signUp-box" maxLength='30' value={email} onChange={changeEmail}></input>
-                        <input type="password" placeholder="Enter Password" className="signUp-box" value={password} onChange={changePassword}></input>
-                        <input type="tel" placeholder="Enter Mobile no" className="signUp-box" maxLength='10' value={mobileno} onChange={changeMobileNo}></input>
+                        <input type="email" placeholder="Enter Email" className="signUp-box" maxLength='30' value={email} onChange={changeEmail} required></input>
+                        <input type="password" placeholder="Enter Password" className="signUp-box" value={password} onChange={changePassword} required></input>
+                        <input type="tel" placeholder="Enter Mobile no" className="signUp-box" maxLength='10' value={mobileno} onChange={changeMobileNo} required></input>
                         <input type="checkbox" className="signUp-check" required></input>
                         <label className="signUp-label">Agree Terms and Conditions</label>
                         <button className="signUp-button" type="submit">SignUp</button>

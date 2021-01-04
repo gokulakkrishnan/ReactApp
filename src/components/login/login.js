@@ -6,15 +6,17 @@ function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(true);
+    const [cursor, setCursor] = useState("pointer");
     const history = useHistory();
     function changeEmail(event) {
         setEmail(event.target.value)
     }
     function changePassword(event) {
-        setPassword(event.target.value)
+        setPassword(event.target.value) 
     }
     async function onSubmit(event) {
         event.preventDefault();
+        setCursor("progress")
         const Email = { email }.email;
         const Password = { password }.password;
         const registered = {
@@ -39,6 +41,7 @@ function LoginPage(props) {
         }
         else {
             setLoading(false)
+            setCursor("pointer")
             localStorage.setItem('token', response);
             history.push('/dashboard')
         }
@@ -57,7 +60,7 @@ function LoginPage(props) {
                             <input type="email" placeholder="Enter your Email" className="login-box" onChange={changeEmail} value={email} ></input>
                             <input type="password" placeholder="Enter your Password" className="login-box" onChange={changePassword} value={password} ></input>
                             <a href='//#endregion' className="login-forlink">Forgot Password?</a>
-                            <button className="login-button" type="submit">Login</button>
+                            <button className="login-button" type="submit" style={{ cursor: cursor }}>Login</button>
                             <p className="login-p">Do not have account?<span ><a href='/Signup' className='login-span'>SignUp</a></span></p>
                         </div>
                     </form>

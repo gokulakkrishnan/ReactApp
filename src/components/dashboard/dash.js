@@ -82,7 +82,7 @@ function Dash() {
         setList(newList);
         
     }
-    async function deleteItem(index) {
+    async function deleteItem(index,list) {
         setCursor("progress")
         const taskid = list[index].taskId;
         const payload = {
@@ -125,12 +125,11 @@ function Dash() {
                                 <button type="submit" className="btn" title="Add">Add</button>
                             </form>
                         </div>
-
                         <div className="box-main"  >
                             {
                                 list.map((task, index) =>
                                 (<div className="items" key={index} >
-                                    <span onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"} style={{ cursor: cursor }}>
+                                    <span  onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"} style={{ cursor: cursor }}>
                                         {task.taskName}
                                     </span>
                                     <div >

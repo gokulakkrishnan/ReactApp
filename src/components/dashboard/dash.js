@@ -46,6 +46,7 @@ function Dash() {
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json',
+                'Access-Control-Allow-Origin':  ' http://localhost:3000',
                 'Authorization': bearerToken
             },
             body: JSON.stringify(payload)
@@ -68,7 +69,7 @@ function Dash() {
             taskName: taskname.toString(),
             taskStatus: taskstatus.toString()
         }
-        await fetch('https://cors-anywhere.herokuapp.com/https://todo-application-using-nodejs.herokuapp.com/api/todo', {
+        await fetch('https://todo-application-using-nodejs.herokuapp.com/api/todo', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -88,7 +89,7 @@ function Dash() {
         const payload = {
             taskId: taskid.toString()
         }
-        await fetch('https://cors-anywhere.herokuapp.com/https://todo-application-using-nodejs.herokuapp.com/api/todo', {
+        await fetch('https://todo-application-using-nodejs.herokuapp.com/api/todo', {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

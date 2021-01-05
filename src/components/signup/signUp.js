@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-function SignUpPage() {
+function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [mobileno, setMobileno] = useState('');
@@ -100,4 +100,4 @@ function SignUpPage() {
         </div>
     );
 }
-export default SignUpPage;
+export default Signup;

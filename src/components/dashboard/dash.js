@@ -32,7 +32,6 @@ function Dash() {
             });
             setLoading(false);
             const response = await result.json();
-            console.log(response)
             setList(response);
         }
         fetchData();

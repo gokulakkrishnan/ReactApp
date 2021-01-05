@@ -8,6 +8,7 @@ function Dash() {
     const [list, setList] = useState([]);
     const [taskName, setTaskName] = useState('');
     const [loading, setLoading] = useState(true);
+    const [item, setItem] = useState('');
     const [cursor, setCursor] = useState("pointer");
     const history = useHistory();
     const token = localStorage.getItem('token');
@@ -31,12 +32,14 @@ function Dash() {
             });
             setLoading(false);
             const response = await result.json();
+            console.log(response)
             setList(response);
         }
         fetchData();
-    }, [bearerToken, taskName]);
+    }, [bearerToken, item]);
     async function onSubmit(event) {
         event.preventDefault();
+        setCursor("progress")
         const name = { taskName }.taskName;
         const completed = "Incomplete";
         const payload = {
@@ -52,6 +55,8 @@ function Dash() {
             },
             body: JSON.stringify(payload)
         });
+        setItem(taskName);
+        setCursor("pointer")
         toast.success("Task Added Successfully...", {
             position: "top-right",
             className: "updatetoast",
@@ -102,7 +107,6 @@ function Dash() {
         setCursor("pointer")
         const newList = [...list];
         setList(newList);
-
     }
     async function deleteItem(index) {
         setCursor("progress")
@@ -154,7 +158,7 @@ function Dash() {
                         <div className="addinput">
                             <form onSubmit={onSubmit}>
                                 <input type="text" placeholder="Add Item" className="inputbox" value={taskName} onChange={e => setTaskName(e.target.value)} required />
-                                <button type="submit" className="btn" title="Add">Add</button>
+                                <button type="submit" className="btn" title="Add" style={{ cursor: cursor }}>Add</button>
                             </form>
                         </div>
                         <div className="box-main"  >

@@ -2,6 +2,8 @@ import './login.css';
 import React, { useState } from 'react';
 import Helmet from 'react-helmet'
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,7 +14,7 @@ function LoginPage(props) {
         setEmail(event.target.value)
     }
     function changePassword(event) {
-        setPassword(event.target.value) 
+        setPassword(event.target.value)
     }
     async function onSubmit(event) {
         event.preventDefault();
@@ -37,7 +39,16 @@ function LoginPage(props) {
         if (response.includes("error")) {
             const a = response.split(',')[2];
             const b = a.split(':')[1].replace("}", '');
-            alert(b);
+            toast.error(b, {
+                position: "top-right",
+                className: "updatetoast",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
         }
         else {
             setLoading(false)
@@ -70,6 +81,7 @@ function LoginPage(props) {
                     </div>
                 </section>
             }
+            <ToastContainer />
         </section>
     );
 };

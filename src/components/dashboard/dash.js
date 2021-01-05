@@ -2,6 +2,8 @@ import Helmet from 'react-helmet';
 import { useHistory } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './dash.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Dash() {
     const [list, setList] = useState([]);
     const [taskName, setTaskName] = useState('');
@@ -32,7 +34,7 @@ function Dash() {
             setList(response);
         }
         fetchData();
-    }, [bearerToken,taskName]);
+    }, [bearerToken, taskName]);
     async function onSubmit(event) {
         event.preventDefault();
         const name = { taskName }.taskName;
@@ -46,10 +48,19 @@ function Dash() {
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json',
-                'Access-Control-Allow-Origin':  ' http://localhost:3000',
                 'Authorization': bearerToken
             },
             body: JSON.stringify(payload)
+        });
+        toast.success("Task Added Successfully...", {
+            position: "top-right",
+            className: "updatetoast",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
         });
         setTaskName('');
     }
@@ -69,7 +80,7 @@ function Dash() {
             taskName: taskname.toString(),
             taskStatus: taskstatus.toString()
         }
-        await fetch('https://todo-application-using-nodejs.herokuapp.com/api/todo', {
+        await fetch('https://cors-anywhere.herokuapp.com/https://todo-application-using-nodejs.herokuapp.com/api/todo', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -78,18 +89,28 @@ function Dash() {
             },
             body: JSON.stringify(payload)
         });
+        toast.success("Updated Successfully...", {
+            position: "top-right",
+            className: "updatetoast",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+        });
         setCursor("pointer")
         const newList = [...list];
         setList(newList);
-        
+
     }
-    async function deleteItem(index,list) {
+    async function deleteItem(index) {
         setCursor("progress")
         const taskid = list[index].taskId;
         const payload = {
             taskId: taskid.toString()
         }
-        await fetch('https://todo-application-using-nodejs.herokuapp.com/api/todo', {
+        await fetch('https://cors-anywhere.herokuapp.com/https://todo-application-using-nodejs.herokuapp.com/api/todo', {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -97,6 +118,16 @@ function Dash() {
                 'Authorization': bearerToken,
             },
             body: JSON.stringify(payload)
+        });
+        toast.success("Deleted Successfully...", {
+            position: "top-right",
+            className: "updatetoast",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
         });
         setCursor("pointer")
         const newList = [...list];
@@ -130,7 +161,7 @@ function Dash() {
                             {
                                 list.map((task, index) =>
                                 (<div className="items" key={index} >
-                                    <span  onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"} style={{ cursor: cursor }}>
+                                    <span onClick={() => updateItem(index)} className={task.taskStatus === "Completed" ? "task-name completed-task " : "task-name"} style={{ cursor: cursor }}>
                                         {task.taskName}
                                     </span>
                                     <div >
@@ -142,6 +173,7 @@ function Dash() {
                     </div>
                 </div>
             }
+            <ToastContainer />
         </section>
     )
 }

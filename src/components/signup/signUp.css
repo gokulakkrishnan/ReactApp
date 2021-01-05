@@ -66,6 +66,10 @@
   .signUp-span{
     color:pink;
   }
+  .updatetoast{
+    position: relative;
+     top :60px;
+  }
   .loadingbody{
     margin: 0;
     padding: 0;

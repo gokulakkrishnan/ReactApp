@@ -68,6 +68,10 @@
     justify-content: center;
     font-family: "montserrat",sans-serif;
 }
+.updatetoast{
+  position: relative;
+   top :60px;
+}
 .loading{
     width: 200px;
     height: 200px;
